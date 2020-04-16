@@ -12,7 +12,7 @@ function App() {
   const rows = [];
   for (let i = 1; i < 2 ** n; i++) {
     const element = CardRow({
-      n: n, i: i, flips: flips,
+      n: n, i: i, key: i, flips: flips,
     });
     rows.push(element);
   }
@@ -24,6 +24,7 @@ function App() {
     const element = Flipper({
       n: n,
       i: i,
+      key: i,
       selectedValue: flips[i],
       onChange: ((cardIdx) => {
         var flips2 = flips.slice()

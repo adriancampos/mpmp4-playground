@@ -1,6 +1,6 @@
 import React from 'react';
-import cardUp from './card_up.png';
-import cardDown from './card_down.png';
+import cardUp from '../images/card_up.png';
+import cardDown from '../images/card_down.png';
 import './card.css';
 import { Card as MaterialCard } from '@material-ui/core'
 
