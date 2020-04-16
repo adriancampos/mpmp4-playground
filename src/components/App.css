@@ -2,9 +2,7 @@ html {
   background-color: #282c34;
 }
 
-.App {
-  height: 100vh;
-}
+.App {}
 
 .InputField {
   margin-bottom: 16px !important;

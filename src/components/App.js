@@ -3,6 +3,7 @@ import './App.css';
 import CardRow from './cardrow.js'
 import Flipper from './flipper.js'
 import { TextField, Toolbar, Typography, AppBar, Card as MaterialCard, Button } from '@material-ui/core';
+import { FaGithub } from 'react-icons/fa'
 
 function App() {
   const [n, setNumCards] = React.useState(4)
@@ -70,6 +71,16 @@ function App() {
           />
           {flippers}
           <Button onClick={(() => setNumFlips(parseInt(numFlips) + 1))}>Add Another Flip</Button>
+
+          <div style={{ flex: "1 1 0" }}></div>
+          <footer>
+            Made for <a href="https://www.think-maths.co.uk/card-puzzle" target="_blank">Matt Parker's Maths Puzzles - Puzzle 4</a>
+            <br />
+            <div style={{ display: "flex" }}>
+              <span style={{ flex: 1 }}>By Adrian</span>
+              <span><a href="https://github.com/adriancampos/mpmp4-playground" target="_blank" style={{ color: "rgba(0, 0, 0, 0.87)" }}><FaGithub /></a></span>
+            </div>
+          </footer>
         </MaterialCard>
       </div>
     </div>
