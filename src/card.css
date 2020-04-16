@@ -1,0 +1,20 @@
+.Card {
+    padding: 8px;
+    margin: 4px
+}
+
+.Card>img {
+    height: 6em;
+    width: 4.286em;
+}
+
+.CardRow {
+    margin: 12px;
+}
+
+.CardRow.facedown .Card {}
+
+.CardRow.facedown {
+    opacity: 50%;
+    filter: saturate(0);
+}
