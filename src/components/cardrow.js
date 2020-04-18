@@ -17,7 +17,7 @@ function CardRow(props) {
 
   // Apply user's flips by "simulating" them
   for (const flip in props.flips) {
-    if (props.flips[flip]) {
+    if (props.flips[flip] != null) {
       cardFacedowns[props.flips[flip]] = !cardFacedowns[props.flips[flip]]
     }
 

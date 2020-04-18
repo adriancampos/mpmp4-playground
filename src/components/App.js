@@ -4,11 +4,16 @@ import CardRow from './cardrow.js'
 import Flipper from './flipper.js'
 import { TextField, Toolbar, Typography, AppBar, Card as MaterialCard, Button } from '@material-ui/core';
 import { FaGithub } from 'react-icons/fa'
+import { useQueryParam, NumberParam, withDefault, DelimitedNumericArrayParam } from "use-query-params";
 
 function App() {
-  const [n, setNumCards] = React.useState(4)
+  const [n, _setNumCards] = useQueryParam("n", withDefault(NumberParam, 4));
+  const setNumCards = (num) => _setNumCards(num, 'replaceIn');  // Wrap setNumCards so we can control the updateType here
 
-  const [flips, setFlips] = React.useState([])
+  var [_flips, _setFlips] = useQueryParam("flips", withDefault(DelimitedNumericArrayParam, []))
+  const setFlips = (flips) => _setFlips(flips, 'replaceIn');  // Wrap setFlips so we can control the updateType here
+  // Query Param's built in withDefault isn't sufficient. We always want our array to be size at least 1 (even if empty).
+  const flips = (_flips.length < 1) ? [null] : _flips
 
   const rows = [];
   for (let i = 1; i < 2 ** n; i++) {
@@ -18,7 +23,16 @@ function App() {
     rows.push(element);
   }
 
-  const [numFlips, setNumFlips] = React.useState(1);
+  const numFlips = flips.length;
+  function setNumFlips(num) {
+    // No negative flips!
+    if (num < 0) {
+      num = 0;
+    }
+    var newFlips = flips.slice();
+    newFlips.length = num;
+    setFlips(newFlips)
+  }
 
   const flippers = [];
   for (let i = 0; i < numFlips; i++) {
